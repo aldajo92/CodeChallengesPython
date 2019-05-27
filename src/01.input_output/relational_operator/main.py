@@ -12,8 +12,5 @@ entries_size = input()
 list_values = []
 
 for _ in range(int(entries_size)):
-    values = input()
-    list_values.append([int(x) for x in values.split(" ")])
-
-for values in list_values:
-    print(return_operator(values[0], values[1]))
+    values = input().split(" ")
+    print(return_operator(int(values[0]), int(values[1])))
