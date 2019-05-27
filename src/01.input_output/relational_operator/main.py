@@ -9,8 +9,6 @@ def return_operator(value1, value2):
 
 entries_size = input()
 
-list_values = []
-
 for _ in range(int(entries_size)):
     values = input().split(" ")
     print(return_operator(int(values[0]), int(values[1])))
