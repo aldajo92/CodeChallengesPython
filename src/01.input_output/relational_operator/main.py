@@ -7,15 +7,13 @@ def return_operator(value1, value2):
         return "="
 
 
-if __name__ == "__main__":
+entries_size = input("Enter the number of entries\n")
 
-    entries_size = input("Enter the number of entries\n")
+list_values = []
 
-    list_values = []
+for _ in range(int(entries_size)):
+    values = input()
+    list_values.append([int(x) for x in values.split(" ")])
 
-    for _ in range(int(entries_size)):
-        values = input()
-        list_values.append([int(x) for x in values.split(" ")])
-
-    for values in list_values:
-        print(return_operator(values[0], values[1]))
+for values in list_values:
+    print(return_operator(values[0], values[1]))
