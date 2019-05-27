@@ -7,7 +7,7 @@ def return_operator(value1, value2):
         return "="
 
 
-entries_size = input("Enter the number of entries\n")
+entries_size = input()
 
 list_values = []
 
