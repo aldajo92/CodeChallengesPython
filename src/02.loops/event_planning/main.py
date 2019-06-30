@@ -1,7 +1,6 @@
 read_input = input()
 
 try:
-
     while read_input is not None:
         n, b, h, w = [int(x) for x in read_input.split(" ")]
 
