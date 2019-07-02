@@ -1,32 +1,32 @@
 input_data = input()
 
 while input_data != "0 0 0 0":
-    h, u, d, f = [int(x) for x in input_data.split(" ")]
+    h_ref, u_ref, d_ref, f = [int(x) for x in input_data.split(" ")]
 
-    day = 0
-    distance = 0.0
-    factor_climbed = (f * u) / 100.00000
-    reducer_climber = 0.0
+    h = 100 * h_ref
+    u = 100 * u_ref
+    d = 100 * d_ref
 
-    print("factor of {}".format(factor_climbed))
-
-    while 0 <= distance <= h:
-        print("distance morning: {};".format(distance))
-        distance_per_day = u - reducer_climber
-
-        if distance_per_day < 0:
-            distance_per_day = 0
-        distance += distance_per_day
-        day += 1
-
-        print("distance: {}; reducer: {}".format(distance, reducer_climber))
-        if distance > h or distance <= 0:
+    day = 1
+    factor_climbed = f * u_ref
+    distance_climbed = 0
+    while True:
+        fatigue_factor = u - ((day - 1) * factor_climbed)
+        if fatigue_factor < 0:
+            fatigue_factor = 0
+        # print("{}; {}; {}; {}".format(day, fatigue_factor, distance_climbed + fatigue_factor,
+        #                               distance_climbed + fatigue_factor - d))
+        distance_climbed = distance_climbed + fatigue_factor
+        if distance_climbed > h:
             break
 
-        reducer_climber += factor_climbed
-        distance = distance - d
+        distance_climbed = distance_climbed - d
+        if distance_climbed <= 0:
+            break
 
-    if distance <= 0:
+        day += 1
+
+    if distance_climbed <= 0:
         print("failure on day {}".format(day))
     else:
         print("success on day {}".format(day))
