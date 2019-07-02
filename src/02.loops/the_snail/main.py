@@ -10,23 +10,26 @@ while input_data != "0 0 0 0":
     day = 1
     factor_climbed = f * u_ref
     distance_climbed = 0
+
+    fatigue_factor = u
+
     while True:
-        fatigue_factor = u - ((day - 1) * factor_climbed)
-        if fatigue_factor < 0:
-            fatigue_factor = 0
-        # print("{}; {}; {}; {}".format(day, fatigue_factor, distance_climbed + fatigue_factor,
-        #                               distance_climbed + fatigue_factor - d))
-        distance_climbed = distance_climbed + fatigue_factor
+        distance_climbed += fatigue_factor
+
+        if fatigue_factor > 0:
+            fatigue_factor -= factor_climbed
+
         if distance_climbed > h:
             break
 
-        distance_climbed = distance_climbed - d
-        if distance_climbed <= 0:
+        distance_climbed -= d
+
+        if distance_climbed < 0:
             break
 
         day += 1
 
-    if distance_climbed <= 0:
+    if distance_climbed < 0:
         print("failure on day {}".format(day))
     else:
         print("success on day {}".format(day))
