@@ -3,7 +3,7 @@ def binary_search(array, target):
     end_index = len(array) - 1
 
     while start_index <= end_index:
-        mid_index = (end_index - start_index) // 2
+        mid_index = (end_index + start_index) // 2
 
         mid_element = array[mid_index]
 
@@ -11,9 +11,9 @@ def binary_search(array, target):
             return mid_index
 
         elif target < mid_element:
-            end_index = mid_element - 1
+            end_index = mid_index - 1
         else:
-            start_index = mid_element + 1
+            start_index = mid_index + 1
 
     return -1
 
