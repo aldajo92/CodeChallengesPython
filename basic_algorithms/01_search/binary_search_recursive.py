@@ -12,21 +12,20 @@ def binary_search_recursive(array, target, start_index, end_index):
     if mid_element == target:
         return mid_index
     elif target < mid_element:
-        binary_search_recursive(array, target, start_index, mid_index - 1)
+        return binary_search_recursive(array, target, start_index, mid_index - 1)
     else:
-        binary_search_recursive(array, target, start_index + 1, mid_index)
+        return binary_search_recursive(array, target, mid_index + 1, end_index)
 
 
 def test_function(test_case):
     answer = binary_search(test_case[0], test_case[1])
+    print(answer)
     if answer == test_case[2]:
         print("Pass!")
     else:
         print("Fail!")
 
 
-array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-target = 4
-index = 4
-test_case = [array, target, index]
-test_function(test_case)
+test_function([[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 4, 4])
+test_function([[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 8, 8])
+test_function([[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 9, 9])
