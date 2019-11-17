@@ -7,8 +7,6 @@ def return_operator(value1, value2):
         return "="
 
 
-entries_size = input()
-
-for _ in range(int(entries_size)):
+for _ in range(int(input())):
     values = input().split(" ")
     print(return_operator(int(values[0]), int(values[1])))
